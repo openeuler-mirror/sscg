@@ -1,12 +1,12 @@
 Name:           sscg
 Version:        2.6.2
-Release:        1
+Release:        2
 Summary:        Simple Signed Certificate Generator
 License:        GPL-3.0 
 URL:            https://github.com/sgallagher/sscg
 Source0:        https://github.com/sgallagher/sscg/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  gcc libtalloc-devel openssl-devel popt-devel libpath_utils-devel meson ninja-build git help2man
+BuildRequires:  gcc libtalloc-devel openssl-devel popt-devel libpath_utils-devel meson ninja-build help2man
 
 %description
 SSCG(Simple Signed Certificate Generator) makes it easy to generate usable and secure
@@ -16,7 +16,7 @@ the service certificate without needing to set up a full PKI environment and wit
 the machine to a risk of false signatures from the service certificate.
 
 %prep
-%autosetup -n %{name}-%{version} -p1 -Sgit
+%autosetup -n %{name}-%{version} -p1
 
 %build
 %meson
@@ -44,6 +44,9 @@ the machine to a risk of false signatures from the service certificate.
 %{_mandir}/man8/sscg.8*
 
 %changelog
+* Fri Jul 30 2021 chenyanpanHW <chenyanpan@huawei.com> - 2.6.2-2
+- DESC: delete -Sgit from %autosetup, and delete BuildRequires git
+
 * Sat Jul 25 2020 yang_zhuang_zhuang<yangzhuangzhuang1@huawei.com> - 2.6.2-1
 - Type:enhancement
 - ID:NA
