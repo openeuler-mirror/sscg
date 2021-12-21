@@ -1,10 +1,13 @@
 Name:           sscg
 Version:        2.6.2
-Release:        2
+Release:        3
 Summary:        Simple Signed Certificate Generator
 License:        GPL-3.0 
 URL:            https://github.com/sgallagher/sscg
 Source0:        https://github.com/sgallagher/sscg/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
+%ifarch riscv64
+Patch0000:      increase-timeout-rv64.patch
+%endif
 
 BuildRequires:  gcc libtalloc-devel openssl-devel popt-devel libpath_utils-devel meson ninja-build help2man
 
@@ -44,6 +47,9 @@ the machine to a risk of false signatures from the service certificate.
 %{_mandir}/man8/sscg.8*
 
 %changelog
+* Tue Dec 21 2021 xijing666 <xijing@nj.iscas.ac.cn> - 2.6.2-3
+- DESC: add patch increase-timeout-rv64.patch for some test timeout on rv64
+
 * Fri Jul 30 2021 chenyanpanHW <chenyanpan@huawei.com> - 2.6.2-2
 - DESC: delete -Sgit from %autosetup, and delete BuildRequires git
 
